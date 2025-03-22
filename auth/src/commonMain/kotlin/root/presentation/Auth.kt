@@ -5,14 +5,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.github.kotlin.fibonacci.root.domain.AuthNav
+import root.presentation.dashboard.Dashboard
 
 @Composable
 fun Auth() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = AuthNav.Dashboard.route) {
-        composable(route = AuthNav.Dashboard.route) { }
-        composable(route = AuthNav.Login.route) { }
-        composable(route = AuthNav.SignUp.route) { }
-        composable(route = AuthNav.ForgotPassword.route) { }
+        composable(route = AuthNav.Dashboard.route) {
+            Dashboard(navController = navController)
+        }
+        composable(route = AuthNav.Login.route) {
+
+        }
+        composable(route = AuthNav.SignUp.route) {
+
+        }
+        composable(route = AuthNav.ForgotPassword.route) {
+
+        }
     }
 }
