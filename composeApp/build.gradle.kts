@@ -48,6 +48,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.navigation.compose)
             implementation(project(":commonComponents"))
+            implementation(project(":auth"))
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
