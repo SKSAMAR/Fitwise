@@ -5,6 +5,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.navigation.compose.rememberNavController
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -23,14 +25,16 @@ fun FitWiseTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+    val navHostController = rememberNavController()
     val colorScheme = when {
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = PoppinsTypography(),
-        content = content
-    )
+    CompositionLocalProvider(LocalNavHostController provides navHostController) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = PoppinsTypography(),
+            content = content
+        )
+    }
 }
